@@ -8,12 +8,13 @@ export async function getStaticProps() {
             coins,
             propTest: 'This is a test!',
         },
+        revalidate: 10,
     };
 }
 
 type coinsProps = { coins: any[]; propTest: string };
 
-const Static = ({ coins }: coinsProps) => {
+const Isr = ({ coins }: coinsProps) => {
     return (
         <ul>
             {coins
@@ -27,4 +28,4 @@ const Static = ({ coins }: coinsProps) => {
     );
 };
 
-export default Static;
+export default Isr;

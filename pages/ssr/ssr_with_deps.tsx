@@ -1,4 +1,4 @@
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const coins = await fetch(
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=10&page=1&sparkline=false',
     ).then((res) => res.json());
@@ -13,7 +13,7 @@ export async function getStaticProps() {
 
 type coinsProps = { coins: any[]; propTest: string };
 
-const Static = ({ coins }: coinsProps) => {
+const Ssr = ({ coins }: coinsProps) => {
     return (
         <ul>
             {coins
@@ -27,4 +27,4 @@ const Static = ({ coins }: coinsProps) => {
     );
 };
 
-export default Static;
+export default Ssr;
