@@ -14,7 +14,17 @@ export async function getStaticProps() {
 type coinsProps = { coins: any[]; propTest: string };
 
 const Static = ({ coins, propTest }: coinsProps) => {
-    return <div>Static component</div>;
+    console.log(propTest);
+
+    return (
+        <ul>
+            {coins
+                .sort((a, b) => a.name - b.name)
+                .map((coin: any) => (
+                    <li key={coin.id}>{coin.name}</li>
+                ))}
+        </ul>
+    );
 };
 
 export default Static;
