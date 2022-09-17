@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export async function getStaticProps() {
     const coins = await fetch(
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=volume_desc&per_page=10&page=1&sparkline=false',
@@ -22,7 +24,11 @@ const Isr = ({ coins }: coinsProps) => {
                     a.name > b.name ? 1 : a.name < b.name ? -1 : 0,
                 )
                 .map((coin: any) => (
-                    <li key={coin.id}>{coin.name}</li>
+                    <Link href={`isr/${coin.id}`}>
+                        <a>
+                            <li key={coin.id}>{coin.name}</li>
+                        </a>
+                    </Link>
                 ))}
         </ul>
     );
